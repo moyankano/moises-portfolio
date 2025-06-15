@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: moyankano/moises-portfolio  # Reemplázalo
+  branch: master
+
+media_folder: "static/images"       # Carpeta para imágenes
+public_folder: "/images"           # Ruta pública
+
+collections:
+  - name: "posts"                  # Coincide con la carpeta de Hugo
+    label: "Posts del Blog"
+    folder: "content/posts"        # Ruta donde se guardan los posts
+    create: true                   # Permite crear nuevos posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Formato del nombre del archivo
+    fields:
+      - { name: "title", label: "Título", widget: "string" }
+      - { name: "date", label: "Fecha", widget: "datetime" }
+      - { name: "draft", label: "Borrador", widget: "boolean", default: false }
+      - { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] }
+      - { name: "body", label: "Contenido", widget: "markdown" }
+
+fields:
+  - name: "description"
+    label: "Descripción (para SEO)"
+    widget: "text"
+  - name: "cover_image"
+    label: "Imagen destacada"
+    widget: "image"
+    required: false      

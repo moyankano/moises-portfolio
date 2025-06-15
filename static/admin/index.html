@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Decap CMS</title>
+  <!-- Carga Decap CMS con integridad SRI (opcional pero recomendado) -->
+</head>
+<body>
+  <!-- Script de inicialización CON RETRASO Y VERIFICACIÓN -->
+  <script>
+    function initDecapCMS() {
+      // Verificación explícita
+      if (typeof CMS === 'undefined') {
+        console.error("Error: CMS no definido. Causas posibles:");
+        console.log("- Conflicto con otras bibliotecas JS");
+        console.log("- El script se cargó pero no se registró correctamente");
+        console.log("- Versión incompatible del CMS");
+        return;
+      }
+
+      // Configuración mínima
+      CMS.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "moyankano/moises-portfolio", // ¡EDITA ESTO!
+            branch: "master"
+          },
+          local_backend: window.location.hostname === "localhost",
+          media_folder: "static/images",
+          public_folder: "/images"
+        }
+      });
+    }
+
+    // Espera 500ms adicionales para asegurar la carga
+    setTimeout(() => {
+      initDecapCMS();
+    }, 500);
+  </script>
+
+</body>
+
+  <script 
+    src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.0/dist/decap-cms.js"
+  ></script>
+</html>

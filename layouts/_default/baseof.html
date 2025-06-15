@@ -2,6 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 <head>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
   <meta charset="UTF-8">
@@ -60,6 +61,16 @@
   {{ $script := resources.Get "js/index.js" | minify | fingerprint }}
   <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity | safeHTMLAttr }}" crossorigin="anonymous"></script>
   {{ block "scripts" . }} {{ end }}
+
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    });
+  }
+</script>
 </body>
 
 </html>
