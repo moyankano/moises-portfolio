@@ -7,7 +7,7 @@ theme = "hugo-theme-codex"
 # Override these settings with your own
 title = "Moises - Portfolio"
 languageCode = "en-us"
-baseURL = "moisesportfolio"
+baseURL = "https://moisesportfolio.netlify.app"
 copyright = "© {year}"
 
 # Add your Disqus shortname here.
@@ -80,3 +80,6 @@ copyright = "© {year}"
     for = "/admin/*"
     [server.headers.values]
       Access-Control-Allow-Origin = "*"
+
+[development]
+  baseURL = "http://localhost:1313"
