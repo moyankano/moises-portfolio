@@ -7,7 +7,7 @@ theme = "hugo-theme-codex"
 # Override these settings with your own
 title = "Moises - Portfolio"
 languageCode = "en-us"
-baseURL = "https://example.org/"
+baseURL = "http://localhost:1313"
 copyright = "© {year}"
 
 # Add your Disqus shortname here.
