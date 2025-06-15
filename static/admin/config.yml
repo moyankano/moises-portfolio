@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: moyankano/moises-portfolio  # Reemplázalo
+  site_id: "moisesportfolio"
   branch: master
   local_backend: true
 
