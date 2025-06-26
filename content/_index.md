@@ -1,5 +1,5 @@
 ---
 heading: "Hola, soy Moi"
-subheading: "A minimal blog theme for hugo."
-handle: "hugo-theme-codex"
+subheading: "Apasionado de la tecnología"
+handle: "MRB"
 ---
