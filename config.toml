@@ -70,10 +70,6 @@ copyright = "© {year}"
   name = "blog"
   title = "Blog"
   url = "/posts"
-  
-[[menu.main]]
-  name = "Proyectos"
-  url = "/projects"
 
 [server]
   [[server.headers]]
