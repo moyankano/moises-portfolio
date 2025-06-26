@@ -25,6 +25,4 @@ tags:
 
 ![Plafón instalado](/images/imagen-de-whatsapp-2025-06-26-a-las-20.06.58_0682910d.jpg "Plafón instalado")
 
-![Plafón apagado](/images/imagen-de-whatsapp-2025-06-26-a-las-20.06.58_c45f71a1.jpg "Plafón apagado")
-
-![]()
+![Plafón encendido](/images/imagen-de-whatsapp-2025-06-26-a-las-20.06.58_c45f71a1.jpg "Plafón encendido")
