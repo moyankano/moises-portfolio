@@ -7,7 +7,7 @@ tags:
   - led
   - javimanitas
 ---
-![Caja Original](/images/imagen-de-whatsapp-2025-06-26-a-las-18.49.31_ae3051c4filtradayrecortada.jpg "Caja Original")
+![Caja Original](/images/imagen-de-whatsapp-2025-06-26-a-las-18.49.31_ae3051c4filtrada.jpg "Caja Original")
 
 ![Instrucciones, tacos y tornillos](/images/imagen-de-whatsapp-2025-06-26-a-las-20.06.59_efb51964.jpg "Instrucciones, tacos y  tornillos")
 
