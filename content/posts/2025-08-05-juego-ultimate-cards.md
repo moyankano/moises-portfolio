@@ -51,4 +51,8 @@ También siguiendo en la parte superior tenemos una barra de menú, en color ver
 
      ![Ventana de login, registro, cerrar sesión y recuperar contraseña](/images/captura-de-pantalla-2025-08-05-204538.png "Ventana de login, registro, cerrar sesión y recuperar contraseña")
 2. Icono Medallas: Nos mostraár una ventana auxiliar donde su cometido es ver la tabla de clasificación de los jugadores en el juego junto con su posición en el ranking.
+
+   ![Ventana tabla de clasificación](/images/captura-de-pantalla-2025-08-05-204713.png "Ventana tabla de clasificación")
 3. Icono de información: Muestra una pequeña descripción de las reglas del juego.
+
+   ![Ventana reglas del juego](/images/captura-de-pantalla-2025-08-05-204800.png "Ventana reglas del juego")
