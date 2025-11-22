@@ -1,7 +1,7 @@
 ---
 title: Tesla Coil
 date: 2025-11-22T17:23:23.658Z
-draft: true
+draft: false
 tags:
   - teslacoil
 ---
