@@ -6,7 +6,7 @@ tags:
   - android
   - cartas
 ---
-* # Localización y descarga
+# Localización y descarga
 
 Juego desarrollado en Android/Kotlin a través de Android Studio.
 
@@ -20,7 +20,7 @@ Y para jugar en un entorno Windows buscando en la aplicación de Google Play Jue
 
 ![Portada Google Play Juegos Beta Windows](/images/captura-de-pantalla-2025-08-05-202613.png "Portada Google Play Juegos Beta Windows")
 
-* # Descripción del Juego Ultimate Cards
+# Descripción del Juego Ultimate Cards
 
 El juego se puede describir como un juego de cartas. 
 
@@ -34,9 +34,11 @@ Empezando por la parte superior. Vemos tres indicadores: Total, Win y Reloj digi
 
 ![Indicadores superiores del juego](/images/captura-de-pantalla-2025-08-05-203457.png "Indicadores superiores del juego")
 
-1. Total: Indica la cantidad, en número, de la jugada que llevas actualmente. Si hay que voltear 3 cartas de 5, se verá en tiempo real la suma de las cantidades de esas 3 cartas.
-2. Win: Se irá incrementando en una unidad en caso de que el Total anterior, de cada jugada, sea el ansiado número 20.
-3. Reloj digital: Es la cuenta atrás del tiempo establecido, actualmente 3 minutos. Durante estos tres minutos podrás jugar las partidas que quieras y/o que te de tiempo.
+Total: Indica la cantidad, en número, de la jugada que llevas actualmente. Si hay que voltear 3 cartas de 5, se verá en tiempo real la suma de las cantidades de esas 3 cartas.
+
+Win: Se irá incrementando en una unidad en caso de que el Total anterior, de cada jugada, sea el ansiado número 20.
+
+Reloj digital: Es la cuenta atrás del tiempo establecido, actualmente 3 minutos. Durante estos tres minutos podrás jugar las partidas que quieras y/o que te de tiempo.
 
 También siguiendo en la parte superior tenemos una barra de menú, en color verde, que además del nombre del juego en la zona izquierda de la misma, tenemos tres iconos con sus respectivas funciones:
 
