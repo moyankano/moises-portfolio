@@ -5,6 +5,8 @@ draft: false
 tags:
   - teslacoil
 ---
+
+
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.36.50_ee31db69.jpg)
 
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.36.50_5197e6f4.jpg)
@@ -12,15 +14,3 @@ tags:
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.38.48_f1f2157b.jpg)
 
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.38.47_777f65f9.jpg)
-
-![](https://youtu.be/vX2GSr5rCno?si=eKLvY2rxjwD38bk3)
-
-![]()
-
-![]()
-
-![]()
-
-![]()
-
-![]()
