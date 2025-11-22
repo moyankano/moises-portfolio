@@ -18,6 +18,8 @@ collections:
       - { name: "date", label: "Fecha", widget: "datetime" }
       - { name: "draft", label: "Borrador", widget: "boolean", default: false }
       - { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] }
+      - { label: "Video", name: "video", widget: "file", required: false }
+      - { label: "Video Caption", name: "video_caption", widget: "string", required: false }
       - { name: "body", label: "Contenido", widget: "markdown" }
 
 fields:
