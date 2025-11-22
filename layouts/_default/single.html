@@ -12,6 +12,15 @@
             <h1 id="post__title">{{.Title}}</h1>
             {{ if .Date }}<time datetime="{{ .Date }}" class="post__date">{{ .Date.Format $dateFormat }}</time> {{ end }}
           </header>
+
+          {{ if .Params.video }}
+          <div class="post__video">
+            <video controls style="width: 100%; max-width: 100%; border-radius: 8px;">
+              <source src="{{ .Params.video }}" type="video/mp4">
+              Tu navegador no soporta el elemento video.
+            </video>
+          </div>            
+            
           <article class="post__content">
               {{ partial "anchored-headings.html" .Content }}
               {{ if or .Params.math .Site.Params.math }}
