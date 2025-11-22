@@ -30,7 +30,7 @@ fields:
     required: false      
 
 editor:
-  preview: false
+  preview: true
   components:
     - id: "video"
       label: "Insertar Video"
