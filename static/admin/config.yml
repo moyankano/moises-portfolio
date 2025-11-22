@@ -28,3 +28,11 @@ fields:
     label: "Imagen destacada"
     widget: "image"
     required: false      
+
+editor:
+  preview: false
+  components:
+    - id: "video"
+      label: "Insertar Video"
+      type: "markdown"
+      value: '{{< video src="UPLOAD_VIDEO" >}}'
