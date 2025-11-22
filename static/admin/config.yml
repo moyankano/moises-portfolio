@@ -18,21 +18,26 @@ collections:
       - { name: "date", label: "Fecha", widget: "datetime" }
       - { name: "draft", label: "Borrador", widget: "boolean", default: false }
       - { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] }
-      - { name: "body", label: "Contenido", widget: "markdown" }
-
-fields:
-  - name: "description"
-    label: "Descripción (para SEO)"
-    widget: "text"
-  - name: "cover_image"
-    label: "Imagen destacada"
-    widget: "image"
-    required: false      
-
-editor:
-  preview: true
-  components:
-    - id: "video"
-      label: "Insertar Video"
-      type: "markdown"
-      value: '{{< video src="UPLOAD_VIDEO" >}}'
+      - label: "Contenido"
+        name: "body"
+        widget: "markdown"
+        buttons: 
+          - bold
+          - italic
+          - link
+          - heading-one
+          - heading-two
+          - quote
+          - bulleted-list
+          - numbered-list
+          - image
+          - video-custom
+        editorComponents:
+          - video-custom    
+  
+# Widget personalizado para videos
+widgets:
+  - name: "video-custom"
+    label: "Video"
+    type: "markdown"
+    value: '{{< video src="UPLOAD_VIDEO" >}}'
