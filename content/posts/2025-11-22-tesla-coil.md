@@ -13,5 +13,3 @@ video: /images/video-de-whatsapp-2025-11-22-a-las-17.46.50_6da19524.mp4
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.38.48_f1f2157b.jpg)
 
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.38.47_777f65f9.jpg)
-
-{{</* video src="/images/video-de-whatsapp-2025-11-22-a-las-18.14.11_7df8dc50.mp4" */>}}
