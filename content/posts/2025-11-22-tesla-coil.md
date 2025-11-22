@@ -13,7 +13,7 @@ tags:
 
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.38.47_777f65f9.jpg)
 
-![](https://youtube.com/shorts/2jl2VhjuNzc)
+![](https://youtu.be/vX2GSr5rCno?si=eKLvY2rxjwD38bk3)
 
 ![]()
 
