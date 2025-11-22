@@ -6,7 +6,7 @@ tags:
   - android
   - cartas
 ---
-# Localización y descarga
+## Localización y descarga
 
 Juego desarrollado en Android/Kotlin a través de Android Studio.
 
@@ -20,7 +20,7 @@ Y para jugar en un entorno Windows buscando en la aplicación de Google Play Jue
 
 ![Portada Google Play Juegos Beta Windows](/images/captura-de-pantalla-2025-08-05-202613.png "Portada Google Play Juegos Beta Windows")
 
-# Descripción del Juego Ultimate Cards
+## Descripción del Juego Ultimate Cards
 
 El juego se puede describir como un juego de cartas. 
 
@@ -46,12 +46,15 @@ También siguiendo en la parte superior tenemos una barra de menú, en color ver
 
 1. Icono Muñeco con la llave de seguridad: Nos mostrará una ventana auxiliar que tiene cuatro funciones:
 
-   * Iniciar sesión con un correo electrónico de Google y contraseña.
-   * Registrarte en caso de no haberlo hecho con anterioridad.
-   * Cerrar la sesión en caso de estar logueado.
-   * Recuperar la contraseña en caso de olvidarla a través del correo electrónico.
+   Iniciar sesión con un correo electrónico de Google y contraseña.
 
-     ![Ventana de login, registro, cerrar sesión y recuperar contraseña](/images/captura-de-pantalla-2025-08-05-204538.png "Ventana de login, registro, cerrar sesión y recuperar contraseña")
+   Registrarte en caso de no haberlo hecho con anterioridad.
+
+   Cerrar la sesión en caso de estar logueado.
+
+   Recuperar la contraseña en caso de olvidarla a través del correo electrónico.
+
+   ![Ventana de login, registro, cerrar sesión y recuperar contraseña](/images/captura-de-pantalla-2025-08-05-204538.png "Ventana de login, registro, cerrar sesión y recuperar contraseña")
 2. Icono Medallas: Nos mostrará una ventana auxiliar donde su cometido es ver la tabla de clasificación de los jugadores en el juego junto con su posición en el ranking.
 
    ![Ventana tabla de clasificación](/images/tablaclasificacion.jpg "Ventana tabla de clasificación")
