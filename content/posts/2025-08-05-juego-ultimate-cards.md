@@ -1,7 +1,7 @@
 ---
 title: Juego Ultimate Cards
 date: 2025-08-05T18:15:02.610Z
-draft: false
+draft: true
 tags:
   - android
   - cartas
