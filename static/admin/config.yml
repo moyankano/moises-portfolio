@@ -27,5 +27,17 @@ collections:
           - link
           - heading-one
           - heading-two
+          - quote
+          - bulleted-list
+          - numbered-list
           - image
-          - code
+          - video-custom
+        editorComponents:
+          - video-custom    
+  
+# Widget personalizado para videos
+widgets:
+  - name: "video-custom"
+    label: "Video"
+    type: "markdown"
+    value: '{{< video src="UPLOAD_VIDEO" >}}'
