@@ -20,7 +20,7 @@
             media_library: {
               allow_multiple: false,
               config: {
-                max_file_size: 50000000, // 50MB
+                max_file_size: 50000000,
                 types: ["video/mp4", "video/webm", "video/ogg"]
               }
             }
@@ -32,26 +32,8 @@
             default: true
           },
           {
-            name: "autoplay",
-            label: "Reproducción automática",
-            widget: "boolean",
-            default: false
-          },
-          {
-            name: "loop",
-            label: "Repetir video",
-            widget: "boolean",
-            default: false
-          },
-          {
-            name: "muted",
-            label: "Silenciado",
-            widget: "boolean",
-            default: false
-          },
-          {
             name: "width",
-            label: "Ancho (ej: 100%, 500px)",
+            label: "Ancho",
             widget: "string",
             default: "100%"
           }
@@ -70,9 +52,6 @@
           return {
             src: attrs.src || '',
             controls: attrs.controls !== 'false',
-            autoplay: attrs.autoplay === 'true',
-            loop: attrs.loop === 'true',
-            muted: attrs.muted === 'true',
             width: attrs.width || '100%'
           };
         },
@@ -80,9 +59,6 @@
           const attrs = [];
           if (data.src) attrs.push(`src="${data.src}"`);
           if (data.controls === false) attrs.push('controls="false"');
-          if (data.autoplay) attrs.push('autoplay="true"');
-          if (data.loop) attrs.push('loop="true"');
-          if (data.muted) attrs.push('muted="true"');
           if (data.width && data.width !== '100%') attrs.push(`width="${data.width}"`);
           
           return `{{< video ${attrs.join(' ')} >}}`;
@@ -90,30 +66,36 @@
         toPreview: function(data) {
           return data.src ? 
             `<div style="border: 1px dashed #ccc; padding: 10px; text-align: center; background: #f9f9f9;">
-              <strong>🎥 Video Incrustado</strong><br/>
-              <small>Archivo: ${data.src.split('/').pop()}</small><br/>
-              <small>Controles: ${data.controls !== false ? 'Sí' : 'No'}</small>
+              <strong>🎥 Video</strong><br/>
+              <small>${data.src.split('/').pop()}</small>
             </div>` : 
-            '<div style="border: 1px dashed #ccc; padding: 10px; text-align: center;">Selecciona un video</div>';
+            '<div>Selecciona un video</div>';
         }
       });
     }
 
     function initDecapCMS() {
       if (typeof CMS === 'undefined') {
-        console.error("Error: CMS no definido.");
+        console.error("CMS no cargado");
         return;
       }
 
+      // Configuración EXPLÍCITA que sobrescribe el config.yml
       CMS.init({
         config: {
+          // Configuración backend
           backend: {
             name: "github",
             repo: "moyankano/moises-portfolio",
             branch: "master"
           },
+          local_backend: true,
+          
+          // Media folders
           media_folder: "static/media",
           public_folder: "/media",
+          
+          // Colecciones - definidas explícitamente
           collections: [
             {
               name: "posts",
@@ -122,32 +104,15 @@
               create: true,
               slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
               fields: [
-                { 
-                  name: "title", 
-                  label: "Título", 
-                  widget: "string" 
-                },
-                { 
-                  name: "date", 
-                  label: "Fecha", 
-                  widget: "datetime" 
-                },
-                { 
-                  name: "draft", 
-                  label: "Borrador", 
-                  widget: "boolean", 
-                  default: false 
-                },
-                { 
-                  name: "tags", 
-                  label: "Etiquetas", 
-                  widget: "list", 
-                  default: ["hugo"] 
-                },
+                { name: "title", label: "Título", widget: "string" },
+                { name: "date", label: "Fecha", widget: "datetime" },
+                { name: "draft", label: "Borrador", widget: "boolean", default: false },
+                { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] },
                 { 
                   name: "description", 
                   label: "Descripción (para SEO)", 
-                  widget: "text" 
+                  widget: "text",
+                  required: false 
                 },
                 { 
                   name: "cover_image", 
@@ -169,26 +134,25 @@
                     "bulleted-list",
                     "numbered-list",
                     "image"
-                    // Solo 9 botones válidos - eliminado el botón inválido
                   ],
                   editor_components: [
-                    "video"  // Componente personalizado para videos
+                    "video"
                   ]
                 }
               ]
             }
-            // Solo una colección 'posts' para evitar duplicados
-          ]
+          ],
+          
+          // Deshabilitar carga de config.yml externo
+          load_config_file: false
         }
       });
     }
 
-    // Inicializar después de cargar el CMS
-    setTimeout(() => {
-      initDecapCMS();
-    }, 500);
+    // Inicializar con retraso
+    setTimeout(initDecapCMS, 1000);
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.0/dist/decap-cms.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
