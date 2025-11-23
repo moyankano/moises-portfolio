@@ -1,4 +1,23 @@
-<video controls style="width: 100%; max-width: 100%; border-radius: 8px; margin: 1rem 0;">
-  <source src="{{ .Get "src" }}" type="video/mp4">
-  Tu navegador no soporta el elemento video.
-</video>
+{{ $src := .Get "src" }}
+{{ $controls := .Get "controls" | default "true" }}
+{{ $autoplay := .Get "autoplay" | default "false" }}
+{{ $loop := .Get "loop" | default "false" }}
+{{ $muted := .Get "muted" | default "false" }}
+{{ $width := .Get "width" | default "100%" }}
+
+<div class="video-container" style="margin: 2rem 0;">
+  <video 
+    {{ if ne $controls "false" }}controls{{ end }}
+    {{ if eq $autoplay "true" }}autoplay{{ end }}
+    {{ if eq $loop "true" }}loop{{ end }}
+    {{ if eq $muted "true" }}muted{{ end }}
+    style="width: {{ $width }}; max-width: 100%; height: auto; border-radius: 8px;"
+    preload="metadata"
+  >
+    <source src="{{ $src }}" type="video/mp4">
+    <source src="{{ $src }}" type="video/webm">
+    <source src="{{ $src }}" type="video/ogg">
+    Tu navegador no soporta el elemento video.
+    <a href="{{ $src }}" download>Descargar video</a>
+  </video>
+</div>

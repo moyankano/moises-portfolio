@@ -4,45 +4,171 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Decap CMS</title>
-  <!-- Carga Decap CMS con integridad SRI (opcional pero recomendado) -->
 </head>
 <body>
-  <!-- Script de inicialización CON RETRASO Y VERIFICACIÓN -->
   <script>
-    function initDecapCMS() {
-      // Verificación explícita
-      if (typeof CMS === 'undefined') {
-        console.error("Error: CMS no definido. Causas posibles:");
-        console.log("- Conflicto con otras bibliotecas JS");
-        console.log("- El script se cargó pero no se registró correctamente");
-        console.log("- Versión incompatible del CMS");
-        return;
-      }
-
-      // Configuración mínima
-      CMS.init({
-        config: {
-          backend: {
-            name: "github",
-            repo: "moyankano/moises-portfolio", // ¡EDITA ESTO!
-            branch: "master"
+    // Widget personalizado para videos
+    if (typeof CMS !== 'undefined') {
+      CMS.registerEditorComponent({
+        id: "video",
+        label: "Video",
+        fields: [
+          {
+            name: "src",
+            label: "Archivo de video",
+            widget: "file",
+            media_library: {
+              allow_multiple: false,
+              config: {
+                max_file_size: 50000000, // 50MB
+                types: ["video/mp4", "video/webm", "video/ogg"]
+              }
+            }
           },
-          //local_backend: window.location.hostname === "localhost",
-          media_folder: "static/images",
-          public_folder: "/images"
+          {
+            name: "controls",
+            label: "Mostrar controles",
+            widget: "boolean",
+            default: true
+          },
+          {
+            name: "autoplay",
+            label: "Reproducción automática",
+            widget: "boolean",
+            default: false
+          },
+          {
+            name: "loop",
+            label: "Repetir video",
+            widget: "boolean",
+            default: false
+          },
+          {
+            name: "muted",
+            label: "Silenciado",
+            widget: "boolean",
+            default: false
+          },
+          {
+            name: "width",
+            label: "Ancho (ej: 100%, 500px)",
+            widget: "string",
+            default: "100%"
+          }
+        ],
+        pattern: /^{{< video\s+(.*?)\s*>}}/,
+        fromBlock: function(match) {
+          if (!match) return {};
+          const attributes = (match[1] || '').split(/\s+/);
+          const attrs = {};
+          attributes.forEach(attr => {
+            const [key, value] = attr.split('=');
+            if (key && value) {
+              attrs[key] = value.replace(/["']/g, '');
+            }
+          });
+          return {
+            src: attrs.src || '',
+            controls: attrs.controls !== 'false',
+            autoplay: attrs.autoplay === 'true',
+            loop: attrs.loop === 'true',
+            muted: attrs.muted === 'true',
+            width: attrs.width || '100%'
+          };
+        },
+        toBlock: function(data) {
+          const attrs = [];
+          if (data.src) attrs.push(`src="${data.src}"`);
+          if (data.controls === false) attrs.push('controls="false"');
+          if (data.autoplay) attrs.push('autoplay="true"');
+          if (data.loop) attrs.push('loop="true"');
+          if (data.muted) attrs.push('muted="true"');
+          if (data.width && data.width !== '100%') attrs.push(`width="${data.width}"`);
+          
+          return `{{< video ${attrs.join(' ')} >}}`;
+        },
+        toPreview: function(data) {
+          return data.src ? 
+            `<div style="border: 1px dashed #ccc; padding: 10px; text-align: center; background: #f9f9f9;">
+              <strong>🎥 Video Incrustado</strong><br/>
+              <small>Archivo: ${data.src.split('/').pop()}</small><br/>
+              <small>Controles: ${data.controls !== false ? 'Sí' : 'No'}</small>
+            </div>` : 
+            '<div style="border: 1px dashed #ccc; padding: 10px; text-align: center;">Selecciona un video</div>';
         }
       });
     }
 
-    // Espera 500ms adicionales para asegurar la carga
+    function initDecapCMS() {
+      if (typeof CMS === 'undefined') {
+        console.error("Error: CMS no definido.");
+        return;
+      }
+
+      CMS.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "moyankano/moises-portfolio",
+            branch: "master"
+          },
+          media_folder: "static/media",
+          public_folder: "/media",
+          collections: [
+            {
+              name: "posts",
+              label: "Posts del Blog",
+              folder: "content/posts",
+              create: true,
+              slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+              fields: [
+                { name: "title", label: "Título", widget: "string" },
+                { name: "date", label: "Fecha", widget: "datetime" },
+                { name: "draft", label: "Borrador", widget: "boolean", default: false },
+                { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] },
+                { 
+                  name: "description", 
+                  label: "Descripción (para SEO)", 
+                  widget: "text" 
+                },
+                { 
+                  name: "cover_image", 
+                  label: "Imagen destacada", 
+                  widget: "image",
+                  required: false 
+                },
+                { 
+                  label: "Contenido",
+                  name: "body",
+                  widget: "markdown",
+                  buttons: [
+                    "bold",
+                    "italic", 
+                    "link",
+                    "heading-one",
+                    "heading-two", 
+                    "quote",
+                    "bulleted-list",
+                    "numbered-list",
+                    "image"
+                  ],
+                  editor_components: [
+                    "video"  // ← Agregamos el componente de video aquí
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      });
+    }
+
+    // Inicializar después de cargar el CMS
     setTimeout(() => {
       initDecapCMS();
     }, 500);
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.0/dist/decap-cms.js"></script>
 </body>
-
-  <script 
-    src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.0/dist/decap-cms.js"
-  ></script>
 </html>
