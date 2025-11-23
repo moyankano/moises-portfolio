@@ -6,3 +6,16 @@ backend:
 
 media_folder: "static/images"
 public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "Posts del Blog"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Título", widget: "string" }
+      - { name: "date", label: "Fecha", widget: "datetime" }
+      - { name: "draft", label: "Borrador", widget: "boolean", default: false }
+      - { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] }
+      - { name: "body", label: "Contenido", widget: "markdown" }
