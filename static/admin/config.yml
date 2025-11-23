@@ -1,23 +1,30 @@
 backend:
   name: github
-  repo: moyankano/moises-portfolio  # Reemplázalo
+  repo: moyankano/moises-portfolio
   branch: master
   local_backend: true
 
-media_folder: "static/images"       # Carpeta para imágenes
-public_folder: "/images"           # Ruta pública
+media_folder: "static/images"
+public_folder: "/images"
 
 collections:
-  - name: "posts"                  # Coincide con la carpeta de Hugo
+  - name: "posts"
     label: "Posts del Blog"
-    folder: "content/posts"        # Ruta donde se guardan los posts
-    create: true                   # Permite crear nuevos posts
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Formato del nombre del archivo
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { name: "title", label: "Título", widget: "string" }
       - { name: "date", label: "Fecha", widget: "datetime" }
       - { name: "draft", label: "Borrador", widget: "boolean", default: false }
       - { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] }
+      - name: "description"
+        label: "Descripción (para SEO)"
+        widget: "text"
+      - name: "cover_image"
+        label: "Imagen destacada"
+        widget: "image"
+        required: false
       - label: "Contenido"
         name: "body"
         widget: "markdown"
@@ -31,13 +38,3 @@ collections:
           - bulleted-list
           - numbered-list
           - image
-          - video-custom
-        editorComponents:
-          - video-custom    
-  
-# Widget personalizado para videos
-widgets:
-  - name: "video-custom"
-    label: "Video"
-    type: "markdown"
-    value: '{{< video src="UPLOAD_VIDEO" >}}'
