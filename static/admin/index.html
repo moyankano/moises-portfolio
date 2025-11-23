@@ -81,72 +81,7 @@
       }
 
       // Configuración EXPLÍCITA que sobrescribe el config.yml
-      CMS.init({
-        config: {
-          // Configuración backend
-          backend: {
-            name: "github",
-            repo: "moyankano/moises-portfolio",
-            branch: "master"
-          },
-          local_backend: true,
-          
-          // Media folders
-          media_folder: "static/media",
-          public_folder: "/media",
-          
-          // Colecciones - definidas explícitamente
-          collections: [
-            {
-              name: "posts",
-              label: "Posts del Blog",
-              folder: "content/posts",
-              create: true,
-              slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
-              fields: [
-                { name: "title", label: "Título", widget: "string" },
-                { name: "date", label: "Fecha", widget: "datetime" },
-                { name: "draft", label: "Borrador", widget: "boolean", default: false },
-                { name: "tags", label: "Etiquetas", widget: "list", default: ["hugo"] },
-                { 
-                  name: "description", 
-                  label: "Descripción (para SEO)", 
-                  widget: "text",
-                  required: false 
-                },
-                { 
-                  name: "cover_image", 
-                  label: "Imagen destacada", 
-                  widget: "image",
-                  required: false 
-                },
-                { 
-                  label: "Contenido",
-                  name: "body",
-                  widget: "markdown",
-                  buttons: [
-                    "bold",
-                    "italic", 
-                    "link",
-                    "heading-one",
-                    "heading-two", 
-                    "quote",
-                    "bulleted-list",
-                    "numbered-list",
-                    "image"
-                  ],
-                  editor_components: [
-                    "video"
-                  ]
-                }
-              ]
-            }
-          ],
-          
-          // Deshabilitar carga de config.yml externo
-          load_config_file: false
-        }
-      });
+      CMS.init({});
     }
 
     // Inicializar con retraso
