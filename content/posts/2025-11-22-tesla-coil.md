@@ -4,6 +4,7 @@ date: 2025-11-22T17:23:23.658Z
 draft: false
 tags:
   - teslacoil
+  - javimanitas
 video: /images/video-de-whatsapp-2025-11-22-a-las-17.46.50_6da19524.mp4
 ---
 ![](/images/imagen-de-whatsapp-2025-11-22-a-las-17.36.50_ee31db69.jpg)
