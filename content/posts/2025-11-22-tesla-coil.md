@@ -1,7 +1,7 @@
 ---
 title: Tesla Coil
 date: 2025-11-22T17:23:23.658Z
-draft: true
+draft: false
 tags:
   - teslacoil
 video: /images/video-de-whatsapp-2025-11-22-a-las-17.46.50_6da19524.mp4
@@ -24,6 +24,4 @@ video: /images/video-de-whatsapp-2025-11-22-a-las-17.46.50_6da19524.mp4
 
 {{< video src="/images/video-de-whatsapp-2025-11-22-a-las-17.46.50_6da19524.mp4" >}}
 
-{{< video src="/images/video-de-whatsapp-2025-11-22-a-las-17.47.07_f6fc420e.mp4" >}}
-
-{{< video src="/images/video-de-whatsapp-2025-11-22-a-las-17.47.07_f6fc420e.mp4" >}}
+{{< video src="/images/video-de-whatsapp-2025-11-22-a-las-18.14.11_7df8dc50.mp4" >}}
