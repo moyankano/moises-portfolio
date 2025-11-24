@@ -45,7 +45,7 @@ copyright = "© {year}"
 
   # Set to true to display page title in table of contents in blog posts.
   showPageTitleInTOC = false
-adsense_client_id = "{{ env "ADSENSE_CLIENT_ID" }}"
+  enable_adsense = true
 # This disables Hugo's default syntax highlighting in favor
 # of prismjs. If you wish to use Hugo's default syntax highlighting
 # over prismjs, remove this. You will also need to remove the prismjs
