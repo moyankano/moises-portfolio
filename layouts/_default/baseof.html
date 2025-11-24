@@ -46,6 +46,7 @@
       {{ template "_internal/google_analytics_async.html" . }}
   {{- end -}}
 
+  <!-- AdSense -->
   {{ $adsense := site.Data.adsense }}
   {{ with $adsense.client_id }}
   <script 
