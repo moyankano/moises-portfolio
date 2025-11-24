@@ -18,7 +18,6 @@ copyright = "© {year}"
 
 # Optional params
 [params]
-  adsense_client_id = "{{ env "ADSENSE_CLIENT_ID" }}"
   fontFamily = "Fira Code, monospace"  # Ideal para código
   # Follow the Hugo date/time format reference here: 
   # https://gohugo.io/functions/format/#gos-layout-string
@@ -46,7 +45,7 @@ copyright = "© {year}"
 
   # Set to true to display page title in table of contents in blog posts.
   showPageTitleInTOC = false
-
+adsense_client_id = "{{ env "ADSENSE_CLIENT_ID" }}"
 # This disables Hugo's default syntax highlighting in favor
 # of prismjs. If you wish to use Hugo's default syntax highlighting
 # over prismjs, remove this. You will also need to remove the prismjs
