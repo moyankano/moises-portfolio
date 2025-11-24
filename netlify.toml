@@ -4,7 +4,7 @@
   status = 200
 
 [build]
-  command = "sed -i 's/ca-pub-produccion-placeholder/$ADSENSE_CLIENT_ID/g' data/adsense.yaml && hugo --gc --minify"
+  command = "bash build.sh"
   publish = "public"
 
 [context.production.environment]

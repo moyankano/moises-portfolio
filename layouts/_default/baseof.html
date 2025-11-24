@@ -46,20 +46,14 @@
       {{ template "_internal/google_analytics_async.html" . }}
   {{- end -}}
 
-{{ $adsense := site.Data.adsense }}
-{{ with $adsense.client_id }}
-
-<script 
-    async 
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
-    crossorigin="anonymous">
-</script>
-{{ else }}
-<!-- Fallback para desarrollo -->
-<script>
-  console.log("AdSense: client_id no encontrado en data/adsense.yaml");
-</script>
-{{ end }}
+  {{ $adsense := site.Data.adsense }}
+  {{ with $adsense.client_id }}
+  <script 
+      async 
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
+      crossorigin="anonymous">
+  </script>
+  {{ end }}
 </head>
 
 <body>
