@@ -1,3 +1,3 @@
 # data/adsense.yaml
 # Este es un placeholder que será reemplazado en build
-ADSENSE_CLIENT_ID: "ca-pub-produccion-placeholder"
+client_id: "ca-pub-produccion-placeholder"
