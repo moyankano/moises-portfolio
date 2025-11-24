@@ -2,8 +2,6 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%ADSENSE_CLIENT_ID%"
-     crossorigin="anonymous"></script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
@@ -47,6 +45,16 @@
   {{- if not hugo.IsServer -}}
       {{ template "_internal/google_analytics_async.html" . }}
   {{- end -}}
+
+  {{ with site.Params.adsense_client_id }}
+    <script 
+        async 
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
+        crossorigin="anonymous">
+    </script>
+  {{ else }}
+    {{ warnf "ADSENSE_CLIENT_ID no configurada" }}
+  {{ end }}
 </head>
 
 <body>

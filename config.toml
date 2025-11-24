@@ -18,6 +18,7 @@ copyright = "© {year}"
 
 # Optional params
 [params]
+  adsense_client_id = "{{ env "ADSENSE_CLIENT_ID" }}"
   fontFamily = "Fira Code, monospace"  # Ideal para código
   # Follow the Hugo date/time format reference here: 
   # https://gohugo.io/functions/format/#gos-layout-string
