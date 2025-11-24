@@ -7,8 +7,6 @@ mkdir -p data
 echo "client_id: \"$ADSENSE_CLIENT_ID\"" > data/adsense.yaml
 
 echo "✅ data/adsense.yaml creado exitosamente"
-echo "Contenido:"
-cat data/adsense.yaml
 
 # Build con Hugo
 hugo --gc --minify
