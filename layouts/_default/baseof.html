@@ -47,7 +47,7 @@
   {{- end -}}
 
 {{ $adsense := site.Data.adsense }}
-{{ with $adsense_client_id }}
+{{ with $client_id }}
 <script 
     async 
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
