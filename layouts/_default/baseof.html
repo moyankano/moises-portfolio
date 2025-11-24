@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<%= process.env.ADSENSE_CLIENT_ID %>"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%ADSENSE_CLIENT_ID%"
      crossorigin="anonymous"></script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
