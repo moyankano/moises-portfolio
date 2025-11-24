@@ -8,4 +8,7 @@
   publish = "public"
 
 [context.production.environment]
-  HUGO_VERSION = "0.125.7"  # Usa la última versión estable  
+  HUGO_VERSION = "0.125.7"  # Usa la última versión estable
+
+[build.processing]
+  pre_build = "sed -i 's/ca-pub-produccion-placeholder/$ADSENSE_CLIENT_ID/g' data/adsense.yaml"

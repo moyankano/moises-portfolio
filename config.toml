@@ -18,7 +18,6 @@ copyright = "© {year}"
 
 # Optional params
 [params]
-  enable_adsense = true
   fontFamily = "Fira Code, monospace"  # Ideal para código
   # Follow the Hugo date/time format reference here: 
   # https://gohugo.io/functions/format/#gos-layout-string

@@ -46,15 +46,16 @@
       {{ template "_internal/google_analytics_async.html" . }}
   {{- end -}}
 
-    <!-- AdSense -->
-    {{ if site.Params.enable_adsense }}
-        {{ with os.Getenv "ADSENSE_CLIENT_ID" }}
-        <script 
-            async 
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
-            crossorigin="anonymous">
-        </script>
-        {{ end }}
+    {{ $adsense := site.Data.adsense }}
+    {{ with $adsense.client_id }}
+    <!-- Google AdSense -->
+    <script 
+        async 
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}"
+        crossorigin="anonymous">
+    </script>
+    {{ else }}
+    <!-- Debug: AdSense no cargado -->
     {{ end }}
 </head>
 
