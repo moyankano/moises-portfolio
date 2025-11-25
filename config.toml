@@ -6,7 +6,7 @@ theme = "hugo-theme-codex"
 
 # Override these settings with your own
 title = "Moises - Portfolio"
-languageCode = "en-us"
+languageCode = "es-es"
 baseURL = "https://moisesportfolio.netlify.app"
 copyright = "© {year}"
 
