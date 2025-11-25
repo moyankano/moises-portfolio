@@ -6,3 +6,6 @@ other = "Post Siguiente"
 
 [all_posts]
 other = "Todos los Posts"
+
+[about]
+other = "Sobre mí"

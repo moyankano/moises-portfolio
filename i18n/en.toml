@@ -6,3 +6,6 @@ other = "Next Post"
 
 [all_posts]
 other = "All posts"
+
+[about]
+other = "about"
