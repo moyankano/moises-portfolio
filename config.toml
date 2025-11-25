@@ -62,7 +62,7 @@ copyright = "© {year}"
 [[menu.main]]
   identifier = "about"
   name = "about"
-  title = "{{ i18n "about" }}"
+  title = "about"
   url = "/"
 
 [[menu.main]]
