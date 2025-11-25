@@ -43,9 +43,7 @@
   {{ partial "seo-schema.html" .}}
   
   <!-- Analytics -->
-  {{- if hugo.IsProduction -}}
-    {{ template "_internal/google_analytics_async.html" . }}
-  {{- end -}}
+  {{ template "_internal/google_analytics_async.html" . }}
 
   <!-- AdSense -->
   {{ $adsense := site.Data.adsense }}
