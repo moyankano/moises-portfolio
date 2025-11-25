@@ -1,0 +1,8 @@
+[prev_post]
+other = "Post Previo"
+
+[next_post]
+other = "Post Siguiente"
+
+[all_posts]
+other = "Todos los Posts"
