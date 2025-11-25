@@ -41,9 +41,10 @@
   {{ end }} 
   {{ block "links" . }} {{ end }}
   {{ partial "seo-schema.html" .}}
-
-  {{- if not hugo.IsServer -}}
-      {{ template "_internal/google_analytics_async.html" . }}
+  
+  <!-- Analytics -->
+  {{- if hugo.IsProduction -}}
+    {{ template "_internal/google_analytics_async.html" . }}
   {{- end -}}
 
   <!-- AdSense -->
