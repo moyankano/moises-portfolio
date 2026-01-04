@@ -199,3 +199,196 @@ Implementar un kiosk táctil con Raspberry Pi y Ubuntu Core es una solución pro
 
 
 Gracias a Ubuntu Frame y WPE WebKit, es posible construir un sistema limpio, seguro y enfocado únicamente en la aplicación final.
+
+
+
+## Configuración del Kiosk con una aplicación web desplegada en Netlify
+
+
+
+En este proyecto, el kiosk muestra la aplicación web **eltiempoengijon.netlify.app**, una interfaz desarrollada para visualizar información meteorológica y **alojada en un repositorio Git público**, cuyo despliegue se realiza automáticamente mediante **Netlify**.
+
+La Raspberry Pi no ejecuta el código directamente, sino que actúa como cliente, cargando la aplicación web desde Internet en modo pantalla completa.
+
+
+
+## Paso 1: Definir la URL del Kiosk
+
+
+
+Para que el navegador del kiosk cargue la aplicación correcta al arrancar, configura la URL del snap `wpe-webkit-mir-kiosk` con el dominio de Netlify:
+
+```
+sudo snap set wpe-webkit-mir-kiosk url=https://eltiempoengijon.netlify.app
+```
+
+![](/images/blog_3_captura-de-pantalla-2026-01-02-062130.png)
+
+
+
+A partir de este momento, cada vez que la Raspberry Pi se inicie, el sistema mostrará directamente la aplicación meteorológica en pantalla completa y con soporte táctil.
+
+
+
+## Paso 2: Código alojado en un repositorio Git público
+
+La aplicación web que se muestra en el kiosk:
+
+* Está versionada en un repositorio Git público
+* Utiliza un flujo de integración continua con Netlify
+* Se despliega automáticamente cada vez que se realiza un push al repositorio
+
+Esto permite:
+
+* Actualizar el contenido del kiosk sin tocar el dispositivo
+* Gestionar cambios de forma segura y trazable
+* Escalar el sistema a múltiples Raspberry Pi sin reconfiguración adicional
+
+
+
+## Paso 3: Configurar la variable de entorno en Netlify
+
+
+
+La aplicación utiliza la **API de OpenWeatherMap** para obtener los datos meteorológicos.
+
+Por razones de seguridad, la clave de la API **no debe incluirse directamente en el código**, sino que se define como una **variable de entorno en Netlify**.
+
+
+
+Variable requerida
+
+```
+VITE_OPENWEATHER_KEY
+```
+
+
+
+Pasos para añadirla en Netlify
+
+
+
+1. Accede al panel de control de Netlify
+2. Selecciona el sitio eltiempoengijon
+3. Ve a Site settings → Environment variables
+4. Añade una nueva variable:
+
+   * Key: VITE_OPENWEATHER_KEY
+   * Value: TU_API_KEY_DE_OPENWEATHERMAP
+5. Guarda los cambios
+6. Lanza un nuevo despliegue (redeploy)
+
+
+
+Netlify inyectará automáticamente esta variable durante el proceso de build.
+
+> Al tratarse de un proyecto basado en Vite, todas las variables de entorno que deban ser accesibles desde el frontend deben comenzar por VITE_.
+
+
+
+## Paso 4: Verificar el funcionamiento en el Kiosk
+
+Una vez redeplegado el sitio en Netlify:
+
+* La aplicación cargará correctamente los datos meteorológicos
+* No es necesario modificar nada en la Raspberry Pi
+* El kiosk reflejará los cambios automáticamente al recargar la página
+
+Esto hace que el mantenimiento del sistema sea sencillo y completamente remoto.
+
+
+
+Ventaja de este enfoque
+
+* 🌐 Separación total entre hardware y aplicación
+* 🔐 Claves de API protegidas mediante variables de entorno
+* 🔄 Actualizaciones inmediatas sin intervención física
+* 📦 Ideal para entornos kiosk en producción
+
+
+
+## Diagrama de flujo: de Git al Kiosk en la Raspberry Pi
+
+El siguiente diagrama muestra el flujo completo desde el código fuente hasta su visualización en el kiosk táctil de la Raspberry Pi.
+
+```
+┌──────────────────────────┐
+│  Repositorio Git Público │
+│  (Código fuente)         │
+└─────────────┬────────────┘
+              │
+              │ push / commit
+              ▼
+┌──────────────────────────┐
+│        Netlify           │
+│  Build & Deploy          │
+│                          │
+│  Variables de entorno:   │
+│  - VITE_OPENWEATHER_KEY  │
+└─────────────┬────────────┘
+              │
+              │ Despliegue automático
+              ▼
+┌──────────────────────────┐
+│ Aplicación Web Pública   │
+│ https://eltiempoengijon. │
+│ netlify.app              │
+└─────────────┬────────────┘
+              │
+              │ Petición HTTPS
+              ▼
+┌─────────────────────────┐
+│ Raspberry Pi            │
+│ Ubuntu Core             │
+│                         │
+│ ┌────────────────────┐  │
+│ │ Ubuntu Frame       │  │
+│ │ (Servidor gráfico) │  │
+│ └─────────┬──────────┘  │
+│           │             │
+│ ┌─────────▼──────────┐  │
+│ │ WPE WebKit Kiosk   │  │
+│ │ Navegador táctil   │  │
+│ └─────────┬──────────┘  │
+│           │             │
+│ ┌─────────▼──────────┐  │
+│ │ Pantalla táctil    │  │
+│ │ Raspberry Pi       │  │
+│ └────────────────────┘  │
+└─────────────────────────┘
+
+```
+
+## Explicación del flujo
+
+
+
+1. **Repositorio Git público**
+
+   Contiene el código fuente de la aplicación meteorológica.
+2. **Netlify**
+
+   * Detecta automáticamente los cambios en el repositorio.
+   * Ejecuta el proceso de build.
+   * Inyecta la variable de entorno `VITE_OPENWEATHER_KEY`.
+   * Publica la aplicación.
+3. **Aplicación web en Netlify**
+
+   Queda accesible públicamente mediante HTTPS.
+4. **Raspberry Pi con Ubuntu Core**
+
+   * Ubuntu Frame gestiona la salida gráfica.
+   * WPE WebKit carga la URL configurada.
+   * La aplicación se muestra en **modo kiosk y pantalla completa**.
+5. **Pantalla táctil**
+
+   El usuario interactúa directamente con la aplicación sin acceso al sistema operativo.
+
+
+
+## Por qué este flujo es ideal para entornos Kiosk
+
+* 🧱 **Aislamiento total** entre sistema y aplicación
+* 🔄 **Actualizaciones continuas** sin tocar el hardware
+* 🔐 **Gestión segura de claves API**
+* 🚀 **Escalabilidad**: una sola app para múltiples kiosks
