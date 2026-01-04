@@ -1,6 +1,6 @@
 ---
 title: El tiempo en Gijón
-date: 2026-01-04T08:02:45.117Z
+date: 2026-01-04T08:35:54.915Z
 draft: true
 tags:
   - pantalla_tactil
@@ -12,8 +12,6 @@ tags:
 La Raspberry Pi es una de las plataformas más utilizadas para proyectos de **kiosk**, paneles interactivos y señalización digital. Combinada con **Ubuntu Core** y una **pantalla táctil**, se convierte en una solución robusta, segura y fácil de mantener.
 
 En este artículo veremos cómo instalar y configurar un **sistema kiosk en una Raspberry Pi**, utilizando una **pantalla táctil oficial o compatible**, y arrancando directamente una aplicación a pantalla completa.
-
-
 
 ## Escenario del proyecto
 
@@ -32,8 +30,6 @@ Software:
 
 El objetivo es que, al encender la Raspberry Pi, el sistema muestre **una aplicación web a pantalla completa**, con soporte táctil, sin acceso al escritorio.
 
-
-
 ## Paso 1: Instalar Ubuntu Core en la Raspberry Pi
 
 1. Descarga la imagen de **Ubuntu Core para Raspberry Pi** desde el sitio oficial de Ubuntu.
@@ -47,8 +43,6 @@ Durante el primer arranque:
 * Registra tu clave SSH
 
 > Ubuntu Core no incluye entorno gráfico tradicional, todo se gestiona mediante snaps y servicios.
-
-
 
 ## Paso 2: Conectar y verificar la pantalla táctil
 
@@ -65,8 +59,6 @@ Ubuntu Core detecta automáticamente:
 
 No es necesario instalar drivers adicionales en la mayoría de los casos.
 
-
-
 ## Paso 3: Instalar Ubuntu Frame (servidor gráfico)
 
 Ubuntu Frame es el servidor gráfico recomendado para entornos kiosk en Ubuntu Core.
@@ -77,15 +69,11 @@ Instálalo con:
 sudo snap install ubuntu-frame
 ```
 
-
-
 Este componente se encarga de:
 
 * Mostrar gráficos en pantalla
 * Gestionar el input táctil
 * Ejecutar aplicaciones en modo pantalla completa
-
-
 
 ## Paso 4: Instalar el navegador en modo Kiosk
 
@@ -110,7 +98,6 @@ Para que el navegador pueda mostrar gráficos y usar aceleración, conecta las i
 ```
 sudo snap connect wpe-webkit-mir-kiosk:wayland
 sudo snap connect wpe-webkit-mir-kiosk:opengl
-
 ```
 
 Estas conexiones permiten:
@@ -118,8 +105,6 @@ Estas conexiones permiten:
 * Salida gráfica
 * Soporte táctil
 * Mejor rendimiento visual
-
-
 
 ## Paso 6: Configurar la URL del Kiosk
 
@@ -129,15 +114,11 @@ Define la página web que se mostrará al iniciar el sistema:
 sudo snap set wpe-webkit-mir-kiosk url=https://mi-aplicacion-web.com
 ```
 
-
-
 También puedes usar:
 
 * Una IP local
 * Un servidor interno
 * Una aplicación web progresiva (PWA)
-
-
 
 ## Paso 7: Ajustar orientación de la pantalla (opcional)
 
@@ -153,8 +134,6 @@ Valores comunes:
 * 90 → vertical
 * 180 → invertido
 * 270 → vertical inverso
-
-
 
 ## Paso 8: Reiniciar y probar el Kiosk
 
@@ -173,19 +152,17 @@ Tras el arranque:
 
 El usuario no tiene acceso al sistema operativo ni a un escritorio tradicional.
 
+Por defecto tendremos la siguiente vista:
 
+![](/images/img_20260102_062040.jpg)
 
 ## Ventajas de esta solución
-
-
 
 * 🔒 Alta seguridad: sistema inmutable y aislamiento por snaps
 * 🔄 Actualizaciones automáticas
 * 👆 Soporte táctil nativo
 * 🚀 Arranque rápido
 * 🧩 Ideal para producción y despliegues masivos
-
-
 
 ## Conclusión
 
@@ -196,25 +173,15 @@ Implementar un kiosk táctil con Raspberry Pi y Ubuntu Core es una solución pro
 * Control industrial
 * Señalización digital
 
-
-
 Gracias a Ubuntu Frame y WPE WebKit, es posible construir un sistema limpio, seguro y enfocado únicamente en la aplicación final.
 
-
-
 ## Configuración del Kiosk con una aplicación web desplegada en Netlify
-
-
 
 En este proyecto, el kiosk muestra la aplicación web **eltiempoengijon.netlify.app**, una interfaz desarrollada para visualizar información meteorológica y **alojada en un repositorio Git público**, cuyo despliegue se realiza automáticamente mediante **Netlify**.
 
 La Raspberry Pi no ejecuta el código directamente, sino que actúa como cliente, cargando la aplicación web desde Internet en modo pantalla completa.
 
-
-
 ## Paso 1: Definir la URL del Kiosk
-
-
 
 Para que el navegador del kiosk cargue la aplicación correcta al arrancar, configura la URL del snap `wpe-webkit-mir-kiosk` con el dominio de Netlify:
 
@@ -224,11 +191,7 @@ sudo snap set wpe-webkit-mir-kiosk url=https://eltiempoengijon.netlify.app
 
 ![](/images/blog_3_captura-de-pantalla-2026-01-02-062130.png)
 
-
-
 A partir de este momento, cada vez que la Raspberry Pi se inicie, el sistema mostrará directamente la aplicación meteorológica en pantalla completa y con soporte táctil.
-
-
 
 ## Paso 2: Código alojado en un repositorio Git público
 
@@ -244,17 +207,11 @@ Esto permite:
 * Gestionar cambios de forma segura y trazable
 * Escalar el sistema a múltiples Raspberry Pi sin reconfiguración adicional
 
-
-
 ## Paso 3: Configurar la variable de entorno en Netlify
-
-
 
 La aplicación utiliza la **API de OpenWeatherMap** para obtener los datos meteorológicos.
 
 Por razones de seguridad, la clave de la API **no debe incluirse directamente en el código**, sino que se define como una **variable de entorno en Netlify**.
-
-
 
 Variable requerida
 
@@ -262,11 +219,7 @@ Variable requerida
 VITE_OPENWEATHER_KEY
 ```
 
-
-
 Pasos para añadirla en Netlify
-
-
 
 1. Accede al panel de control de Netlify
 2. Selecciona el sitio eltiempoengijon
@@ -278,13 +231,9 @@ Pasos para añadirla en Netlify
 5. Guarda los cambios
 6. Lanza un nuevo despliegue (redeploy)
 
-
-
 Netlify inyectará automáticamente esta variable durante el proceso de build.
 
 > Al tratarse de un proyecto basado en Vite, todas las variables de entorno que deban ser accesibles desde el frontend deben comenzar por VITE_.
-
-
 
 ## Paso 4: Verificar el funcionamiento en el Kiosk
 
@@ -296,7 +245,7 @@ Una vez redeplegado el sitio en Netlify:
 
 Esto hace que el mantenimiento del sistema sea sencillo y completamente remoto.
 
-
+![](/images/img_20260102_062327.jpg)
 
 Ventaja de este enfoque
 
@@ -304,8 +253,6 @@ Ventaja de este enfoque
 * 🔐 Claves de API protegidas mediante variables de entorno
 * 🔄 Actualizaciones inmediatas sin intervención física
 * 📦 Ideal para entornos kiosk en producción
-
-
 
 ## Diagrama de flujo: de Git al Kiosk en la Raspberry Pi
 
@@ -356,12 +303,9 @@ El siguiente diagrama muestra el flujo completo desde el código fuente hasta su
 │ │ Raspberry Pi       │  │
 │ └────────────────────┘  │
 └─────────────────────────┘
-
 ```
 
 ## Explicación del flujo
-
-
 
 1. **Repositorio Git público**
 
@@ -383,8 +327,6 @@ El siguiente diagrama muestra el flujo completo desde el código fuente hasta su
 5. **Pantalla táctil**
 
    El usuario interactúa directamente con la aplicación sin acceso al sistema operativo.
-
-
 
 ## Por qué este flujo es ideal para entornos Kiosk
 
