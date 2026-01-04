@@ -7,7 +7,7 @@ tags:
   - html
   - netlify
 ---
-## Cómo crear un Kiosk en Ubuntu Core para Raspberry Pi con pantalla táctil
+# Cómo crear un Kiosk en Ubuntu Core para Raspberry Pi con pantalla táctil
 
 La Raspberry Pi es una de las plataformas más utilizadas para proyectos de **kiosk**, paneles interactivos y señalización digital. Combinada con **Ubuntu Core** y una **pantalla táctil**, se convierte en una solución robusta, segura y fácil de mantener.
 
@@ -175,7 +175,7 @@ Implementar un kiosk táctil con Raspberry Pi y Ubuntu Core es una solución pro
 
 Gracias a Ubuntu Frame y WPE WebKit, es posible construir un sistema limpio, seguro y enfocado únicamente en la aplicación final.
 
-## Configuración del Kiosk con una aplicación web desplegada en Netlify
+# Configuración del Kiosk con una aplicación web desplegada en Netlify
 
 En este proyecto, el kiosk muestra la aplicación web **eltiempoengijon.netlify.app**, una interfaz desarrollada para visualizar información meteorológica y **alojada en un repositorio Git público**, cuyo despliegue se realiza automáticamente mediante **Netlify**.
 
@@ -254,7 +254,7 @@ Ventaja de este enfoque
 * 🔄 Actualizaciones inmediatas sin intervención física
 * 📦 Ideal para entornos kiosk en producción
 
-## Diagrama de flujo: de Git al Kiosk en la Raspberry Pi
+# Diagrama de flujo: de Git al Kiosk en la Raspberry Pi
 
 El siguiente diagrama muestra el flujo completo desde el código fuente hasta su visualización en el kiosk táctil de la Raspberry Pi.
 
