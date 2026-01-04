@@ -99,7 +99,9 @@ sudo snap install wpe-webkit-mir-kiosk
 
 Este snap está diseñado para ejecutarse directamente sobre Ubuntu Frame.
 
+![](/images/blog_1_captura-de-pantalla-2026-01-02-061929.png)
 
+![](/images/blog_2_captura-de-pantalla-2026-01-02-062006.png)
 
 ## Paso 5: Conectar permisos necesarios
 
