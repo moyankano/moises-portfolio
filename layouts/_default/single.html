@@ -19,8 +19,26 @@
                   {{ partial "math.html" . }}
               {{ end }}
           </article>
-          {{ partial "tags.html" .}} {{ partial "post-pagination.html" .}}
-          {{ template "_internal/disqus.html" . }}
+          {{ partial "tags.html" .}} 
+          {{ partial "post-pagination.html" .}}
+          <!-- 🔽 AQUÍ VA GISCUS (reemplaza Disqus) -->
+          <div id="giscus"></div>
+          <script src="https://giscus.app/client.js"
+                  data-repo="moyankano/moises-portfolio"
+                  data-repo-id="R_kgDOO8DJNg"
+                  data-category="Announcements"
+                  data-category-id="DIC_kwDOO8DJNs4DDbb4"
+                  data-mapping="pathname"
+                  data-strict="0"
+                  data-reactions-enabled="1"
+                  data-emit-metadata="0"
+                  data-input-position="bottom"
+                  data-theme="light_high_contrast"
+                  data-lang="es"
+                  crossorigin="anonymous"
+                  async>
+          </script>
+          <!-- 🔼 FIN GISCUS -->
           <footer class="post__footer">
             {{ partial "social-icons.html" .}}
             <p>{{ replace .Site.Copyright "{year}" now.Year }}</p>
